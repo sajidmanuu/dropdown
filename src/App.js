@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './IndianUniversities.css';
 
-function App() {
+const IndianUniversities = () => {
+  const universities = [
+    'Indian Institute of Technology Bombay',
+    'Indian Institute of Technology Delhi',
+    'Indian Institute of Technology Kanpur',
+    'Indian Institute of Technology Kharagpur',
+    'Indian Institute of Technology Madras',
+    'Indian Institute of Technology Roorkee'
+  ];
+  const [selectedUniversity, setSelectedUniversity] = useState(universities[0]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <select value={selectedUniversity} onChange={e => setSelectedUniversity(e.target.value)} className="select-box">
+        {universities.map(university => (
+          <option key={university} value={university}>
+            {university}
+          </option>
+        ))}
+      </select>
+      <p className="selected-university">Selected University: {selectedUniversity}</p>
     </div>
   );
-}
+};
 
-export default App;
+export default IndianUniversities;
